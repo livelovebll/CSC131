@@ -6,6 +6,7 @@ pygame.init()
 
 width = 800
 height = 600
+
 screen = pygame.display.set_mode((width, height))
 
 carimg = pygame.image.load("car.jpeg")
