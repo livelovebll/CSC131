@@ -6,8 +6,8 @@ class Car(pygame.sprite.Sprite):
     def __init__(self, color, width, height, speed):
         super().__init__()
 
-        #Pass in color of the car,
-        #Set background color
+        #color for car
+        #background color
         self.image = pygame.Surface([width, height])
         self.image.fill(White)
         self.image.set_colorkey(White)
@@ -18,9 +18,8 @@ class Car(pygame.sprite.Sprite):
         self.color = color
         self.speed = speed
 
-        #load in car
-        self.image = pygame.image.load("car1.jpeg").convert_alpha()
-        self.mask = pygame.mask.from_surface(self.image)
+        #load car
+        pygame.draw.rect(self.image, self.color, [0, 0, self.width, self.height])
 
         #fetch car
         self.rect = self.image.get_rect()

@@ -24,8 +24,10 @@ screen = pygame.display.set_caption("Race Game")
 
 all_sprites = pygame.sprite.Group()
 
-playerCar = Car()
 
+playerCar = Car(RED, 60, 80, 70)
+playerCar.rect.x = 160
+playerCar.rect.y = SCREENHEIGHT - 100
 
 car1 = Car(PURPLE, 60, 80, random.randint(50,100))
 car1.rect.x = 60
@@ -44,6 +46,7 @@ car4.rect.x = 360
 car4.rect.y = -900
 
 #add to list of objects
+all_sprites.add(playerCar)
 all_sprites.add(car1)
 all_sprites.add(car2)
 all_sprites.add(car3)
@@ -78,7 +81,7 @@ while carryon:
         speed -= .05
 
     for car in all_coming_objects:
-        car.moveFoward(speed)
+        Car.moveFoward(speed)
         if car.rect.y > SCREENHEIGHT:
             car.changeSPEED(random.randint(50, 100))
             car.repaint(random.choice(colorList))
@@ -94,13 +97,13 @@ while carryon:
 
 
     screen.fill(GREEN)
-    #Draw The Road
+    #Draw Road
     pygame.draw.rect(screen, GREY, [40,0, 400,SCREENHEIGHT])
-    #Draw Line painting on the road
+    
     pygame.draw.line(screen, WHITE, [140,0],[140,SCREENHEIGHT],5)
-    #Draw Line painting on the road
+    
     pygame.draw.line(screen, WHITE, [240,0],[240,SCREENHEIGHT],5)
-    #Draw Line painting on the road
+    
     pygame.draw.line(screen, WHITE, [340,0],[340,SCREENHEIGHT],5)
  
  
@@ -110,7 +113,7 @@ while carryon:
     #Refresh Screen
     pygame.display.flip()
  
-    #frames / second 60
+    
     clock.tick(60)
  
 pygame.quit()
